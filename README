@@ -1,0 +1,9 @@
+cppdepends v1.0.  (C) 2009, 2010 Nathaniel Flath.
+http://github.com/nflath/cppdepends
+
+usage: python cppdepends.py dir out
+
+dir is the path to the directory you wish to generate a dependency graph for.
+out is the file that you wish to generate.
+
+Example usage: python cppdenends.py code/project/src graph.pdf
