@@ -1,9 +1,12 @@
 cppdepends v1.0.  (C) 2009, 2010 Nathaniel Flath.
 http://github.com/nflath/cppdepends
 
-usage: python cppdepends.py dir out
+usage: python cppdepends.py dir out [threshold
 
 dir is the path to the directory you wish to generate a dependency graph for.
 out is the file that you wish to generate.
+threshhold is a multiple of the average number of times a file is included.   If
+   a file is included more than average # of includes * threshhold times, it is
+ highlighted in red.  Defaults to 1.
 
-Example usage: python cppdenends.py code/project/src graph.pdf
+Example usage: python cppdenends.py code/project/src graph.pdf 2
