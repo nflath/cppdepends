@@ -61,7 +61,7 @@ if __name__ == "__main__":
     threshold = 1
     if len(sys.argv) > 3:
         threshold = sys.argv[3]
-    outdot = tempfile.NamedTemporaryFile(delete=False)
+    outdot = open('dot_file', 'w')
     outdot.write("digraph G {\n")
     generate_edges_for_dir(dir, outdot, len(dir) + 1)
     num_includes = sum(nodes.values())
