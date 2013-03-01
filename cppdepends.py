@@ -1,4 +1,4 @@
-# <one line to give the program's name and a brief idea of what it does.>
+# Cppdepends.py - graph the dependencies of your c++ program
 #     Copyright (C) 2009-2013 Nathaniel Flath
 
 #     This program is free software: you can redistribute it and/or modify
