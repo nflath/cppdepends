@@ -31,6 +31,8 @@ threshhold is a multiple of the average number of times a file is included.   If
    a file is included more than average # of includes * threshhold times, it is
  highlighted in red.  Defaults to 1.
 
+If using <> style includes, should be run using the base path.
+
 Example usage: python cppdenends.py code/project/src graph.pdf 2
 """
 
@@ -50,10 +52,13 @@ def generate_edges_for_dir(dir, size):
         full_file = os.path.abspath(os.path.join(dir,f))
         if os.path.isfile(full_file) and not ignorePattern.search(f):
             for line in file(full_file):
-                if includePattern.match(line) is not None:
-                    includeName = os.path.abspath(
-                        os.path.join(dir,
-                                     includePattern.match( line ).group(1)))[size:]
+                if "#include" in line:
+                    if '"' in line:
+                        includeName = os.path.abspath(
+                            os.path.join(dir,
+                                         line.split()[1][1:-1]))[size:]
+                    else:
+                        includeName = line.split()[1][1:-1]
                     nodes[full_file[size:]] += [includeName]
                     numNodeIncluded[includeName] += 1;
         elif not ignorePattern.search(f):
@@ -155,4 +160,3 @@ if __name__ == "__main__":
     outdot.write("}\n")
     outdot.close()
     os.system( "dot -Tpdf -o " + outpdf + " " + outdot.name )
-
